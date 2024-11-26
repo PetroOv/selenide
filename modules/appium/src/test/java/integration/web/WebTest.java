@@ -37,4 +37,14 @@ public class WebTest {
       .isInstanceOf(ElementShould.class)
       .hasMessageContaining("Element: '<a href=\"https://selenide.org/\" id=\"lang_eng\">EN</a>'");
   }
+
+
+  @Test
+  void click_only_once() {
+    open("https://selenide.org/documentation.html");
+    var link = "https://selenide.gitbooks.io/user-guide/content/en/selenide-api/configuration.html";
+
+    SelenideAppiumElement gitbookLink = $(By.cssSelector("[href='" + link + "']"));
+    gitbookLink.click();
+  }
 }
